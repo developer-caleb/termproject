@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'app/home/home_page.dart';
+
 class HomeScreen extends StatefulWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,18 +24,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     });
   }
 
-  List<Widget> _widgetOptions = <Widget>[
-    Text(
-      '홈 화면2',
-    ),
+  final List<Widget> _screens = <Widget>[
+    //Text('홈화면'),
+    HomePage(),
     Text('검색 화면'),
-    Text('내 정보 화면'),
+    Text('세팅 화면'),
   ];
   @override
   void initState() {
-    tabController = TabController(length: _widgetOptions.length, vsync: this)
+    tabController = TabController(length: _screens.length, vsync: this)
       ..addListener(() {
-        print('setstate');
+        print('tab listener');
         setState(() {});
       });
     super.initState();
@@ -47,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: tabController,
-        children: _widgetOptions,
+        children: _screens,
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -60,8 +61,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             label: '검색',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '내 정보',
+            icon: Icon(Icons.settings),
+            label: 'setting',
           ),
         ],
         currentIndex: tabController.index,
