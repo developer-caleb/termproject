@@ -5,12 +5,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.tealAccent,
-      body: Text(
-        '홈페이지',
-        style: Theme.of(context).textTheme.titleLarge,
-      ),
+    return Text(
+      '홈페이지',
+      style: Theme.of(context).textTheme.titleLarge,
     );
   }
 }
