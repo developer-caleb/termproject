@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:termproject/config/app_style.dart';
 
 class SettingPage extends StatefulWidget {
@@ -13,10 +14,27 @@ class _SettingPageState extends State<SettingPage> {
   bool _darkModeEnabled = false;
   bool _autoSaveEnabled = false;
   bool _syncEnabled = false;
+  SharedPreferences? prefs;
 
   @override
   void initState() {
     super.initState();
+    getSetting();
+  }
+
+  Future getSetting() async {
+    prefs = await SharedPreferences.getInstance();
+    _notificationEnabled = prefs!.getBool('setting_notificationEnabled') ?? false;
+    _darkModeEnabled = prefs!.getBool('setting_darkModeEnabled') ?? false;
+    _autoSaveEnabled = prefs!.getBool('setting_autoSaveEnabled') ?? false;
+    _syncEnabled = prefs!.getBool('setting_syncEnabled') ?? false;
+    print('_notificationEnabled : $_notificationEnabled');
+    print('_darkModeEnabled : $_darkModeEnabled');
+    print('_autoSaveEnabled : $_autoSaveEnabled');
+    print('_syncEnabled : $_syncEnabled');
+
+    setState(() {});
+    return;
   }
 
   @override
@@ -42,6 +60,8 @@ class _SettingPageState extends State<SettingPage> {
                   onChanged: (value) {
                     setState(() {
                       _notificationEnabled = value;
+                      print('is null : ${prefs == null}');
+                      prefs!.setBool('setting_notificationEnabled', value);
                     });
                   }),
               SwitchListTile(
@@ -50,6 +70,7 @@ class _SettingPageState extends State<SettingPage> {
                   onChanged: (value) {
                     setState(() {
                       _darkModeEnabled = value;
+                      prefs!.setBool('setting_darkModeEnabled', value);
                     });
                   }),
               SwitchListTile(
@@ -58,6 +79,7 @@ class _SettingPageState extends State<SettingPage> {
                   onChanged: (value) {
                     setState(() {
                       _autoSaveEnabled = value;
+                      prefs?.setBool('setting_autoSaveEnabled', value);
                     });
                   }),
               _divider,
@@ -67,6 +89,7 @@ class _SettingPageState extends State<SettingPage> {
                   onChanged: (value) {
                     setState(() {
                       _syncEnabled = value;
+                      prefs?.setBool('setting_syncEnabled', value);
                     });
                   }),
             ],
