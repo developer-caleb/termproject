@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:termproject/app/setting/settting_page.dart';
 
+import 'app/getx/count_page.dart';
 import 'app/home/home_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final List<Widget> _screens = <Widget>[
     //Text('홈화면'),
     HomePage(),
-    Text('검색 화면'),
+    CountPage(),
     SettingPage(),
   ];
   @override
