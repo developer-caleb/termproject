@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'count_controller.dart';
 
 class CountPage extends StatelessWidget {
+  const CountPage({super.key});
+
   @override
   Widget build(context) {
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
@@ -21,6 +23,7 @@ class CountPage extends StatelessWidget {
 
 class Other extends StatelessWidget {
   // You can ask Get to find a Controller that is being used by another page and redirect you to it.
+  Other({super.key});
   final CountController c = Get.find();
 
   @override

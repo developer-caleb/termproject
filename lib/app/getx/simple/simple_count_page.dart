@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:termproject/app/getx/simple/simple_count_controller.dart';
 
 class SimpleCountPage extends StatelessWidget {
+  const SimpleCountPage({super.key});
+
   @override
   Widget build(context) {
     // Instantiate your class using Get.put() to make it available for all "child" routes there.
     return GetBuilder<SimpleCountController>(
         init: SimpleCountController(), // INIT IT ONLY THE FIRST TIME
         builder: (_) => Scaffold(
-            // Use Obx(()=> to update Text() whenever count is changed.
             appBar: AppBar(
               title: Text(
                 '${_.counter}',
@@ -17,13 +18,16 @@ class SimpleCountPage extends StatelessWidget {
             ),
 
             // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
-            body: Center(child: ElevatedButton(child: Text("Go to Other"), onPressed: () => Get.to(Other()))),
+            body: Center(
+                child: ElevatedButton(
+                    child: Text("Go to Other"), onPressed: () => Get.to(Other(), transition: Transition.zoom))),
             floatingActionButton: FloatingActionButton(child: Icon(Icons.add), onPressed: _.increment)));
   }
 }
 
 class Other extends StatelessWidget {
   // You can ask Get to find a Controller that is being used by another page and redirect you to it.
+  Other({super.key});
   final SimpleCountController c = Get.find();
 
   @override
