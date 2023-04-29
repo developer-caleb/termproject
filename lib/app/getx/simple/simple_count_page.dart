@@ -7,7 +7,6 @@ class SimpleCountPage extends StatelessWidget {
 
   @override
   Widget build(context) {
-    // Instantiate your class using Get.put() to make it available for all "child" routes there.
     return GetBuilder<SimpleCountController>(
         init: SimpleCountController(), // INIT IT ONLY THE FIRST TIME
         builder: (_) => Scaffold(
@@ -16,8 +15,6 @@ class SimpleCountPage extends StatelessWidget {
                 '${_.counter}',
               ),
             ),
-
-            // Replace the 8 lines Navigator.push by a simple Get.to(). You don't need context
             body: Center(
                 child: ElevatedButton(
                     child: Text("Go to Other"), onPressed: () => Get.to(Other(), transition: Transition.zoom))),
@@ -26,13 +23,11 @@ class SimpleCountPage extends StatelessWidget {
 }
 
 class Other extends StatelessWidget {
-  // You can ask Get to find a Controller that is being used by another page and redirect you to it.
   Other({super.key});
   final SimpleCountController c = Get.find();
 
   @override
   Widget build(context) {
-    // Access the updated count variable
     return Scaffold(body: Center(child: Text("${c.counter}")));
   }
 }
