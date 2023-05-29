@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:termproject/app/getx/route/info_page.dart';
 import 'package:termproject/app/setting/settting_page.dart';
 
 import 'app/getx/simple/simple_count_page.dart';
@@ -29,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final List<Widget> _screens = <Widget>[
     //Text('홈화면'),
     HomePage(),
+    InfoPage(),
     SimpleCountPage(), //CountPage(),
     SettingPage(),
   ];
@@ -56,6 +58,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             label: '홈',
           ),
           BottomNavigationBarItem(
+            icon: Icon(Icons.info),
+            label: '정보',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: '검색',
           ),
@@ -66,6 +72,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         ],
         currentIndex: tabController.index,
         selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
       ),
     );
