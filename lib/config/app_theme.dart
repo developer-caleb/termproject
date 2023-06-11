@@ -31,8 +31,5 @@ class AppTheme {
       //       bodyText2: TextStyle(color: AppColors.textBlack1, fontSize: 20),
       //     )),
       );
-  static final dark = ThemeData.dark().copyWith(
-    backgroundColor: Colors.black,
-    buttonColor: Colors.red,
-  );
+  static final dark = ThemeData.dark().copyWith();
 }
