@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
             print(response.data);
             RandomUser user = RandomUser.fromJson(response.data['results'][0]);
             print('user :$user');
+            print('user :${user.toJson()}');
           },
           child: Text(
             '홈페이지',

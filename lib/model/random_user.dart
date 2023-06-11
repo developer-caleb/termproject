@@ -10,6 +10,15 @@ class RandomUser {
         email = json['email'],
         imageThumb = json['picture']['medium'];
 
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['gender'] = gender;
+    map['name'] = name;
+    map['email'] = email;
+    map['image'] = imageThumb;
+    return map;
+  }
+
   @override
   String toString() {
     return 'RandomUser{gender: $gender, name: $name,'
